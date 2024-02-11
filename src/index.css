@@ -7,6 +7,11 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+
+  --accent-400: #FFC5C4;
+  --accent-500: #FFB1B1;
+  --accent-800: #FD5354;
 }
 
 body {
@@ -15,4 +20,6 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+
+  background-color: var(--accent-400);
 }
