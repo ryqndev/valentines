@@ -4,6 +4,7 @@
     height: 100vh;
     place-content: center;
     font-family: 'Protest Riot', sans-serif;
+    position: relative;
 
     @media screen and (min-width: 500px) {
         font-size: 3em;
@@ -62,6 +63,11 @@
                     &:hover {
                         background-color: var(--accent-500);
                     }
+                }
+                &.no {
+                    transition: top 250ms, left 250ms;
+                    background-color: var(--accent-400);
+                    padding: 20px 30px;
                 }
             }
         }

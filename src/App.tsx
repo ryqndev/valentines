@@ -3,11 +3,27 @@ import cn from "./App.module.scss";
 import { useCallback, useState } from "react";
 import Swal from "sweetalert2";
 
-function App() {
-  const [hovered, setHovered] = useState(false);
+interface ButtonOffset {
+  top: string;
+  left: string;
+  position: "fixed";
+}
 
+function App() {
+  const [buttonPos, setButtonPos] = useState<ButtonOffset>();
   const accepted = useCallback(() => {
     Swal.fire("Awh, love you too!");
+  }, []);
+
+  const moveButtonRandomly = useCallback(() => {
+    const topOffset = Math.random() * 80 + 10;
+    const leftOffset = Math.random() * 80 + 10;
+
+    setButtonPos({
+      top: topOffset + "%",
+      left: leftOffset + "%",
+      position: "fixed",
+    });
   }, []);
 
   return (
@@ -20,9 +36,10 @@ function App() {
             Yes
           </button>
           <button
-            onMouseOver={() => setHovered(true)}
-            onMouseOut={() => setHovered(false)}
-            className={clsx(cn.button, hovered && cn.disappear)}
+            onMouseOver={moveButtonRandomly}
+            onClick={moveButtonRandomly}
+            className={clsx(cn.button, cn.no)}
+            style={buttonPos ?? {}}
           >
             No
           </button>
